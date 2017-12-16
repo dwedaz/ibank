@@ -1,6 +1,8 @@
 PHP Internet Banking Crawler
 ==================================
 Indonesia Bank Account Crawler
+Support Bank:
+	* BCA
 
 
 ### Installation
@@ -34,11 +36,11 @@ put your configure like this
 ### Script
 how to use
 ```php
- 	require 'vendor/autoload.php';
-	$mybank = new Dwedaz\IBank\Client();
-	$account = $mybank->getSaldo('bca_jakarta');
-	print_r($account);
-	$account = $mybank->getSaldo('bca_pontianak');
+require 'vendor/autoload.php';
+$mybank = new Dwedaz\IBank\Client();
+$account = $mybank->getSaldo('bca_jakarta');
+print_r($account);
+$account = $mybank->getSaldo('bca_pontianak');
 	print_r($account);
 ```
 
