@@ -12,7 +12,7 @@ Class Client{
 		$this->cache = $cache;
 	}
 
-	public function getSaldo($accountName){
+	public function getBalance($accountName){
 		if (!isset($this->accounts['accounts'][$accountName])){
 			throw new Exception("$accountName is not set on account config file");
 		}
@@ -26,7 +26,7 @@ Class Client{
 		$bank = new $className($account);
 		$bank->debug = $this->debug;
 		$bank->cache = $this->cache;
-		return $bank->getSaldo();
+		return $bank->getBalance();
 		
 	}
 

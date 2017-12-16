@@ -1,4 +1,4 @@
-getSaldo:
+getBalance:
   - bca_home_page
   - bca_do_login
   - bca_menu

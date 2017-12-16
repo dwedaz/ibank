@@ -73,7 +73,7 @@ abstract class BankBase{
 
     	if(isset($this->step[$name])){
 
-			foreach($this->step['getSaldo'] as $step){
+			foreach($this->step['getBalance'] as $step){
 				try{			
 					$this->visit($step);
 				}catch(\Exception $e){
