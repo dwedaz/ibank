@@ -1,9 +1,9 @@
 PHP Internet Banking Crawler
 ==================================
-Indonesia Bank Account Crawler
-Support Bank:
-	* BCA
+Indonesia Bank Account Crawler.
+Support:
 
+ * BCA
 
 ### Installation
 
