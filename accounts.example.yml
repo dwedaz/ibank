@@ -1,0 +1,11 @@
+accounts:
+  bca_binus:
+    bank: BCA
+    account: 527XXXXXX
+    username: DWEDAZUD0101
+    password: 999999
+  bca_pontianak:
+    bank: BCA
+    account: 0291469468
+    username: DWEDAZUD0020
+    password: 999999

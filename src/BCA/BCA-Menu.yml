@@ -1,0 +1,35 @@
+bca_home_page:
+  type: curl
+  url: https://m.klikbca.com/login.jsp
+  method: GET
+bca_do_login:
+  type: curl
+  url: https://m.klikbca.com/authentication.do
+  method: POST
+  params:
+    value(user_id): !username
+    value(pswd): !password
+    value(Submit): LOGIN
+    value(actions): login
+    value(user_ip): 
+    user_ip: 
+    value(mobile): true
+    mobile: true
+  parse:
+    isLogin
+bca_menu:
+  type: curl
+  method: POST
+  url: https://m.klikbca.com/accountstmt.do?value(actions)=menu
+bca_balance:
+  type: curl
+  method: POST
+  url: https://m.klikbca.com/balanceinquiry.do
+  parse: 
+    parseBalanceInquiry
+bca_logout:
+  type: curl
+  method: GET
+  url: https://m.klikbca.com/authentication.do?value(actions)=logout
+ 
+      

@@ -1,0 +1,7 @@
+getSaldo:
+  - bca_home_page
+  - bca_do_login
+  - bca_menu
+  - bca_balance
+  - bca_logout
+   
