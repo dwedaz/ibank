@@ -1,6 +1,9 @@
 <?php namespace Dwedaz\IBank;
 use Symfony\Component\Yaml\Yaml;
 use GuzzleHttp\Client;
+use Exception;
+use Carbon\Carbon;
+
 abstract class BankBase{
 	private $username;
 	private $password;
@@ -21,12 +24,14 @@ abstract class BankBase{
 	}
 
 	private function visit($step){
+		if(!isset($this->menu[$step])) throw new Exception("Menu $step is not declare");
 		$var = $this->menu[$step];
+
 		$params = [];
 		extract($var);
 
 		$xmethod = strtoupper($method);
-
+		
 		if(!$this->cache){
 			if($xmethod == 'GET'){
 				$req = $this->browser->$method($url,[]);
@@ -64,6 +69,37 @@ abstract class BankBase{
 				$xvalue = substr($value,1);
 				if(isset($this->account->$xvalue)) $params[$key]=$this->account->$xvalue;
 
+			}elseif($value[0]==='%'){
+				$xvalue = substr($value,1);
+				$end = Carbon::now();
+       			$start = Carbon::now()->subDays(7);
+				switch($xvalue){
+					case 'start-d':
+						$value = $start->format('d');
+						break;
+					case 'start-m':
+						$value = $start->format('m');
+						break;
+					case 'start-Y':
+						$value = $start->format('Y');
+						break;
+					case 'end-d':
+						$value = $end->format('d');
+						break;
+					case 'end-m':
+						$value = $end->format('m');
+						break;
+					case 'end-Y':
+						$value = $end->format('Y');
+						break;
+					default:
+						break;
+
+				}
+				
+				$params[$key]=$value;
+
+
 			}
 		}
 	}
@@ -73,7 +109,8 @@ abstract class BankBase{
 
     	if(isset($this->step[$name])){
 
-			foreach($this->step['getBalance'] as $step){
+			foreach($this->step[$name] as $step){
+				
 				try{			
 					$this->visit($step);
 				}catch(\Exception $e){

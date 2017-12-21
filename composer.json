@@ -4,7 +4,8 @@
     "require": {
         "guzzlehttp/guzzle": "^6.3",
         "symfony/yaml": "^3.4",
-        "symfony/dom-crawler": "^3.4"
+        "symfony/dom-crawler": "^3.4",
+        "nesbot/carbon": "^1.22"
     },
     "autoload": {
         "psr-4": {"Dwedaz\\IBank\\": "src/"}

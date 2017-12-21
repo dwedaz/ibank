@@ -57,6 +57,36 @@ final class BCA extends BankBase{
 	
 	}
 
+	public function parseStatement($html){
+		$crawler = new Crawler($html);
+		try{
+			$rows = $crawler->filterXpath('//*[@id="pagebody"]/span/table[2]/tr[2]/td[2]/table/tr');
+			$i=1;
+			foreach($rows as $row){
+				if($i===1) {$i++; continue;}
+				$row = $row->ownerDocument->saveHTML($row);
+				$row = new Crawler($row);
+				$cont = $row->filterXpath("//td[2]")->html();
+				$cont = explode('<br>',$cont);
+			
+
+				$data[] = [
+		            'date' => $row->filterXpath("//td[1]")->text(),
+		            'desc' => $cont[2] . $cont[3],
+		            'branch' => $cont[4],
+		            'amout' => ($cont[5]),
+		            'type' => $cont[0],
+		            
+		       	 ];
+			}
+		}catch(Exception $e){
+
+		}
+
+		print_r($data);
+		exit;
+	}
+
 
 
 

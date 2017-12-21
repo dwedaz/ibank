@@ -13,9 +13,3 @@ echo ($account);
 $account = $mybank->getBalance('bca_pontianak');
 
 echo ($account);
-
-
-
-
-
-

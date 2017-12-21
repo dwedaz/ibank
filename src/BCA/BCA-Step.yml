@@ -4,4 +4,10 @@ getBalance:
   - bca_menu
   - bca_balance
   - bca_logout
+getStatement:
+  - bca_home_page
+  - bca_do_login
+  - bca_menu
+  - bca_statement
+  - bca_logout
    

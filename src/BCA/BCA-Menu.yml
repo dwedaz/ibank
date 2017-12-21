@@ -17,6 +17,21 @@ bca_do_login:
     mobile: true
   parse:
     isLogin
+bca_statement:
+  type: curl
+  url: https://m.klikbca.com/accountstmt.do?value(actions)=acctstmtview
+  method: POST
+  params:
+    r1: 1
+    value(D1): 0
+    value(startDt): %start-d
+    value(startMt): %start-m
+    value(startYr): %start-Y
+    value(endDt): %end-d
+    value(endMt): %end-m
+    value(endYr): %end-Y
+  parse: 
+    parseStatement
 bca_menu:
   type: curl
   method: POST
